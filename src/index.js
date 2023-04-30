@@ -4,10 +4,16 @@ const morgan = require('morgan');
 const handlebars = require ('express-handlebars');
 const app = express();
 const port = 3000;
+const route = require('./routes/index')
 
+//Middleware for form submission
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json()) 
+
+//Static variables
 app.use(express.static(path.join(__dirname, 'public')))
 
-//HTTP logging configuration
+//HTTP logging configuration 
 app.use(morgan('combined'));
 
 //Template configuration 
@@ -18,17 +24,13 @@ const hbs = handlebars.create({
     partialsDir: 'src/resources/views/partials',
     extname: '.hbs',
   });
-app.engine('hbs', hbs.engine);
+app.engine('hbs', hbs.engine); 
 app.set('view engine', 'hbs');
 
 //The code below change the root directory to ./resources/views (the place where the home.handlebars is located)
 app.set("views", path.resolve(__dirname, "./resources/views"));
-app.get('/', (req,res) => {
-    return res.render('home')
-})
-app.get('/news', (req,res) => {
-    return res.render('news')
-})
 
+
+route(app);
 
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`)) 
