@@ -3,3 +3,5 @@
 
 npm test
 npm run beautify
+npm run beautify
+npm test

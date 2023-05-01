@@ -28,7 +28,8 @@ app.engine('hbs', hbs.engine)
 app.set('view engine', 'hbs')
 
 //The code below change the root directory to ./resources/views (the place where the home.handlebars is located)
-app.set('views', path.resolve(__dirname, './resources/views'))
+app.set('views', 
+  path.resolve(__dirname, './resources/views'))
 
 route(app)
 

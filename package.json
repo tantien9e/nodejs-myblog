@@ -28,6 +28,11 @@
   "lint-staged": {
     "src/**/*.{js, json, scss}": "prettier --single-quote --trailing-comma all --write"
   },
+  "husky":{
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "prettier": {
     "trailingComma": "es5",
     "tabWidth": 4,
@@ -40,7 +45,7 @@
   "devDependencies": {
     "body-parser": "^1.20.2",
     "express-handlebars": "^7.0.7",
-    "husky": "^8.0.0",
+    "husky": "^8.0.3",
     "lint-staged": "^13.2.2",
     "morgan": "^1.10.0",
     "node-sass": "^8.0.0",
