@@ -6,7 +6,9 @@
   "scripts": {
     "start": "nodemon --inspect src/index.js",
     "watch": "node-sass -w src/resources/scss --output src/public/css",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "beautify": "lint-staged",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -23,14 +25,26 @@
     "url": "https://github.com/tantien9e/nodejs-myblog/issues"
   },
   "homepage": "https://github.com/tantien9e/nodejs-myblog#readme",
+  "lint-staged": {
+    "src/**/*.{js, json, scss}": "prettier --single-quote --trailing-comma all --write"
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "tabWidth": 4,
+    "semi": false,
+    "singleQuote": true
+  },
   "dependencies": {
     "express": "^4.18.2"
   },
   "devDependencies": {
     "body-parser": "^1.20.2",
     "express-handlebars": "^7.0.7",
+    "husky": "^8.0.0",
+    "lint-staged": "^13.2.2",
     "morgan": "^1.10.0",
     "node-sass": "^8.0.0",
-    "nodemon": "^2.0.22"
+    "nodemon": "^2.0.22",
+    "prettier": "^2.8.8"
   }
 }
